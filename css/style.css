@@ -10782,6 +10782,22 @@ textarea.form-control {
   animation: loader-dash 1.5s ease-in-out infinite;
   stroke-linecap: round;
 }
+.footer-logo ul {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+  height: 150px;
+}
+.footer-logo li {
+  list-style: none;
+}
+.footer-logo img {
+  width: 100%;
+  padding: 5px;
+  height: 150px;
+  object-fit: cover;
+}
+
 @-webkit-keyframes loader-rotate {
   100% {
       -webkit-transform: rotate(360deg);
