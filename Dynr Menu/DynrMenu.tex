@@ -1,0 +1,111 @@
+\documentclass[12pt]{article}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[textwidth=12cm,centering]{geometry}
+\usepackage[x11names]{xcolor}
+\usepackage{background}
+\usepackage{hyperref}
+
+
+\usepackage{lipsum}
+
+%\newcommand\blfootnote[1]{%
+%	\begingroup
+%	\renewcommand\thefootnote{}\footnote{#1}%
+%	\addtocounter{footnote}{-1}%
+%	\endgroup
+%}
+
+\makeatletter
+\def\blfootnote{\xdef\@thefnmark{}\@footnotetext}
+\makeatother
+\newcommand*\wb[3]{%
+  {\fontsize{#1}{#2}\usefont{U}{webo}{xl}{n}#3}}
+\definecolor{PennSky}{RGB}{0, 156, 222}
+% The page frame
+%\SetBgColor{Goldenrod3}
+\SetBgColor{PennSky}
+\SetBgAngle{0}
+\SetBgScale{1}
+\SetBgOpacity{1}
+\SetBgContents{%
+\begin{tikzpicture}
+\node at (0.5\paperwidth,0) {\wb{80}{34}{A}\rule[60pt]{.2\textwidth}{0.4pt}%
+  \raisebox{55pt}{%
+  \makebox[.6\textwidth]{\ \fontsize{24}{29}\selectfont\scshape Dynr }}%
+  \rule[60pt]{.2\textwidth}{0.4pt}\wb{80}{34}{B}};
+\node at (2,-0.5\textheight) {\rule{0.4pt}{.8\textheight}};
+\node at (19.5,-0.5\textheight) {\rule{0.4pt}{.8\textheight}};
+\node at (0.5\paperwidth,-\textheight) {\wb{80}{34}{C}\rule[-10pt]{\textwidth}{0.4pt}\wb{80}{34}{D}} ;
+\end{tikzpicture}%
+}
+
+
+
+% colorize text
+%\newcommand*\ColText[1]{\textcolor{Goldenrod3}{#1}}
+\newcommand*\ColText[1]{\textcolor{PennSky}{#1}}
+
+% a tabular* for each food group
+\newenvironment{Group}[1]
+  {\noindent\begin{tabular*}{\textwidth}{@{}p{.8\linewidth}@{\extracolsep{\fill}}r@{}}
+    {\fontsize{22}{29}\selectfont\ColText{#1}}\\[0.8em]}
+  {\end{tabular*}}
+
+% to format each entry
+\newcommand*\Entry[2]{%
+  \sffamily#1 & #2}
+
+% to format each subentry
+\newcommand*\Expl[1]{%
+  \hspace*{1em}\footnotesize #1}
+
+\pagestyle{empty}
+
+\begin{document}
+	\raisebox{20pt}{
+  \makebox[.85\textwidth]{\ \fontsize{15}{29}\selectfont\scshape Dynamic Modeling in R }}\\
+\begin{Group}{Getting Started}
+\Entry{dynr.data()}{\href{https://rdrr.io/cran/dynr/man/dynr.data.html}{9.00}} \\
+\Expl{Gather your data} \\
+\Entry{getdx()}{\href{https://rdrr.io/cran/dynr/man/getdx.html}{9.95}} \\
+\Expl{Explore and estimate smoothed derivative estimates} \\
+\end{Group}
+
+%\vfill
+\vspace{0.25cm}
+
+\begin{Group}{Preparing the Main Course}
+\Entry{prep.measurement()}{\href{https://rdrr.io/cran/dynr/man/prep.measurement.html}{19.99}} \\ 
+\Expl{This function can be used to prepare the measurement model} \\
+\Entry{prep.matrixDynamics() or prep.formulaDynamics()}{\href{https://rdrr.io/cran/dynr/man/prep.formulaDynamics.html}{8.90}} \\ 
+\Expl{These functions can be used to prepare the dynamic model} \\ 
+\Entry{prep.initial()}{\href{https://rdrr.io/cran/dynr/man/prep.initial.html}{10.70}} \\ 
+\Expl{This function is used to set initial conditions} \\
+\Entry{prep.noise()}{\href{https://rdrr.io/cran/dynr/man/prep.noise.html}{10.70}} \\ 
+\Expl{This function prepares the noise.. LOL} \\
+\Entry{[\emph{Optional}] prep.regimes()}{\href{https://rdrr.io/cran/dynr/man/prep.regimes.html}{15.99}} \\ 
+\Expl{Use this if your data has multiple regimes in it!} \\
+\Entry{dynr.model()}{\href{https://rdrr.io/cran/dynr/man/dynr.model.html}{10.70}} \\ 
+\Expl{Combine the previous steps; for use with $dynr.cook$()} \\
+\Entry{dynr.cook()}{\href{https://rdrr.io/cran/dynr/man/dynr.cook.html}{29.99}} \\ 
+\Expl{Our main course; use this to run all the previous functions.}\\
+\Expl{Can be subbed with $dynr.mi$(), see below} \\
+\Entry{[\emph{Alternative}] dynr.mi()}\href{https://rdrr.io/cran/dynr/man/dynr.mi.html}{{19.93}} \\ 
+\Expl{Select this instead of $dynr.cook$() if your data are missing}\\
+\Expl{This will return a $dynr.cook$() object and other goodies} \\
+\end{Group}
+
+%\fill
+\vspace{0.25cm}
+
+\begin{Group}{Desserts}
+\Entry{summary()}{5.99} \\
+\Entry{plot() or dynr.ggplot()}{\href{https://rdrr.io/cran/dynr/man/dynr.ggplot.html}{10.99}} \\
+\Entry{plotFormula()}{\href{https://rdrr.io/cran/dynr/man/plotFormula.html}{19.99}} \\
+\Entry{printex()}{\href{https://rdrr.io/cran/dynr/man/printex.html}{14.99}} \\
+\end{Group}
+
+\blfootnote{$^{*}$Prices are arbitrary and are only to keep the pun going. Click the prices to be redirected to a webpage containing more information on that function.}{}
+\end{document}
