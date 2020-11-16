@@ -45,8 +45,8 @@
             navText: ['Prev', 'Next'],
             dots: true,
             autoplay: true,
-            autoplayTimeout: 5000,
-            smartSpeed: 1000
+            autoplayTimeout: 8500,
+            smartSpeed: 2250
         });
 
         welcomeSlide.on('translate.owl.carousel', function () {
