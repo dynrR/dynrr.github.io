@@ -46,7 +46,8 @@
             dots: true,
             autoplay: true,
             autoplayTimeout: 8500,
-            smartSpeed: 2250
+            smartSpeed: 2250,
+            autoplayHoverPause: true,
         });
 
         welcomeSlide.on('translate.owl.carousel', function () {
