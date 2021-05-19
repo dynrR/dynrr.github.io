@@ -49,7 +49,7 @@
 	  </nav>
     <!-- END nav -->
     
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/open-966315_1280.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/dynrerror.png');" data-stellar-background-ratio="0.2">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -65,17 +65,40 @@
 				<div class="row">
           <div class="col-lg-12 ftco-animate">
 
-             <img src="images/freddy-castro-u3ajSXhZM_U-unsplash.jpg" width=1000px, height=450px;>
-                        </p>Photo by <a href="https://unsplash.com/@readysetfreddy?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Freddy Castro</a> on <a href="https://unsplash.com/s/photos/journal?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></p>
+             <!-- <img src="images/dynrerror.png" width=700px, height=200px;>-->
             
 			
-            
 			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
-			  <li><em>Q: How is today's weather?</em></li> 
-			  A: Pretty Good! <br>
-			  
-			  <li><em>Q:How are the things?</em></li> 
-			  A: Good! <br>
+                <li><h3>Q:</h3> I tried running one of the demos, but got the following compilation error: "Error in CompileCode(code, language, verbose, libLFile) : Compilation ERROR, function(s)/method(s) not created! Any idea what is going on?<br>
+                <h3>A:</h3>It sounds like you have installed the dynr package, but have not configured your machine to have it work.  Have you read the User Installation Guide <a href="https://cran.r-project.org/web/packages/dynr/vignettes/InstallationForUsers.pdf">here</a>, and followed its steps?
+                </li>
+                </br>
+              <li><h3>Q:</h3>  I have problems installing dynr in MacOS with Big Sur. I got this result when I tested gas-config: <br> system("gsl-config --cflags", intern=TRUE)<br>
+              [1] "-I/opt/local/include"<br>
+              but when I ran "dynr.cook", I got: <br>
+              Setting PKG_CPPFLAGS to -I/opt/local/include
+              Setting PKG_LIBS to -L/opt/local/lib -lgsl -lgslcblas
+              Compilation argument:
+               /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB RSLinearDiscrete.c -L/opt/local/lib -lgsl -lgslcblas  2> RSLinearDiscrete.c.err.txt
+              May I present to you your error messages?
+              ld: warning: dylib (/opt/local/lib/libgsl.dylib) was built for newer macOS version (11.0) than being linked (10.13)
+              ld: warning: dylib (/opt/local/lib/libgslcblas.dylib) was built for newer macOS version (11.0) than being linked (10.13)
+
+              ERROR(s) during compilation: source code errors or compiler configuration errors!<br>
+              <h3>A:</h3> Big Sur sometimes tries to link to explicit (but the wrong versions) of various libraries. These steps worked for members of our team. If you have not previously installed dynr, Rcpp, or related components (e.g., Command Line Tools) but already have R installed, you can try going directly to Step 6.
+              <ol type = "1">
+              <li>Follow the steps suggested by the coatlessprofessor <a href="https://thecoatlessprofessor.com/programming/r/uninstalling-the-r-development-toolchain-on-macos/">here</a> to remove all previous versions of clang and gfortran, clang4 installer receipt, ~/ .R/Makevars and ~/.Renviron
+              </li>
+              <li>Remove previous versions of XCode and download + install XCode</li>
+              <li>If you have previously installed Command Line Tools, navigate to /Library/Developer and remove Command Line Tools (*this was the step that allowed me to run Rcpp successfully)</li>
+              <li>Install gfortran that is appropriate for your OS from <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases"> here</a></li>
+              <li> Re-install R</li>
+              <li> Go to edit /Library/Frameworks/R.framework/Resources/etc/Makeconf and remove all compilers’ explicit link to a particular OS; e.g., change "CC=clang -mmacosx-version-min=10.16" to just "CC=clang"</li>
+              <li>Install dynr</li>
+              <li>Test run with demo("LinearSDE")</li>
+              </ol>
+              </li>
+              <br>
 			</ul>  
 			
 			
