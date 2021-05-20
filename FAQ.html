@@ -61,31 +61,32 @@
     </section>
 		
 		<section class="ftco-section">
+		
 			<div class="container">
-				<div class="row">
-          <div class="col-lg-12 ftco-animate">
+					<img src="images/dynrerror.png" width=650px, style="display:block; margin:auto;" />
 
-             <!-- <img src="images/dynrerror.png" width=700px, height=200px;>-->
-            
-			
+				<div class="row">
+
+          <div class="col-lg-12 ftco-animate">			
 			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
-                <li><h3>Q:</h3> I tried running one of the demos, but got the following compilation error: "Error in CompileCode(code, language, verbose, libLFile) : Compilation ERROR, function(s)/method(s) not created! Any idea what is going on?<br>
-                <h3>A:</h3>It sounds like you have installed the dynr package, but have not configured your machine to have it work.  Have you read the User Installation Guide <a href="https://cran.r-project.org/web/packages/dynr/vignettes/InstallationForUsers.pdf">here</a>, and followed its steps?
+                <li><h5><b><em>Q:</em> I tried running one of the demos, but got the following compilation error: "Error in CompileCode(code, language, verbose, libLFile) : Compilation ERROR, function(s)/method(s) not created! Any idea what is going on? </em></h5></b>
+                <em>A:</em> It sounds like you have installed the dynr package, but have not configured your machine to have it work.  Have you read the User Installation Guide <a href="https://cran.r-project.org/web/packages/dynr/vignettes/InstallationForUsers.pdf">here</a>, and followed its steps?
                 </li>
                 </br>
-              <li><h3>Q:</h3>  I have problems installing dynr in MacOS with Big Sur. I got this result when I tested gas-config: <br> system("gsl-config --cflags", intern=TRUE)<br>
-              [1] "-I/opt/local/include"<br>
-              but when I ran "dynr.cook", I got: <br>
-              Setting PKG_CPPFLAGS to -I/opt/local/include
-              Setting PKG_LIBS to -L/opt/local/lib -lgsl -lgslcblas
-              Compilation argument:
-               /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB RSLinearDiscrete.c -L/opt/local/lib -lgsl -lgslcblas  2> RSLinearDiscrete.c.err.txt
-              May I present to you your error messages?
-              ld: warning: dylib (/opt/local/lib/libgsl.dylib) was built for newer macOS version (11.0) than being linked (10.13)
-              ld: warning: dylib (/opt/local/lib/libgslcblas.dylib) was built for newer macOS version (11.0) than being linked (10.13)
+              <li><h5><b><em>Q:</em> I have problems installing dynr in MacOS with Big Sur. I got this result when I tested gas-config: <br></b></h5>
+			  <h6><b>system("gsl-config --cflags", intern=TRUE)<br>
+              [1] "-I/opt/local/include"<br></b></h6>
+              <h5><b>but when I ran "dynr.cook", I got: </b></h5>
+              <h6><b>Setting PKG_CPPFLAGS to -I/opt/local/include<br>
+              Setting PKG_LIBS to -L/opt/local/lib -lgsl -lgslcblas<br>
+              Compilation argument:<br>
+               /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB RSLinearDiscrete.c -L/opt/local/lib -lgsl -lgslcblas  2> RSLinearDiscrete.c.err.txt<br>
+              May I present to you your error messages?<br>
+              ld: warning: dylib (/opt/local/lib/libgsl.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
+              ld: warning: dylib (/opt/local/lib/libgslcblas.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
 
-              ERROR(s) during compilation: source code errors or compiler configuration errors!<br>
-              <h3>A:</h3> Big Sur sometimes tries to link to explicit (but the wrong versions) of various libraries. These steps worked for members of our team. If you have not previously installed dynr, Rcpp, or related components (e.g., Command Line Tools) but already have R installed, you can try going directly to Step 6.
+              ERROR(s) during compilation: source code errors or compiler configuration errors!<br></b></h6>
+              <em>A:</em> Big Sur sometimes tries to link to explicit (but the wrong versions) of various libraries. These steps worked for members of our team. If you have not previously installed dynr, Rcpp, or related components (e.g., Command Line Tools) but already have R installed, you can try going directly to Step 6.
               <ol type = "1">
               <li>Follow the steps suggested by the coatlessprofessor <a href="https://thecoatlessprofessor.com/programming/r/uninstalling-the-r-development-toolchain-on-macos/">here</a> to remove all previous versions of clang and gfortran, clang4 installer receipt, ~/ .R/Makevars and ~/.Renviron
               </li>
