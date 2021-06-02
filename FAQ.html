@@ -26,6 +26,33 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+  background-color: #f1f1f1;
+}
+</style>
   </head>
   <body>
     
@@ -59,63 +86,104 @@
         </div>
       </div>
     </section>
+	
+	<section class="ftco-section">
+		<div class="container">
+		<img src="images/dynrerror.png" width=650px, style="display:block; margin:auto;" />
 		
-		<section class="ftco-section">
-		
-			<div class="container">
-					<img src="images/dynrerror.png" width=650px, style="display:block; margin:auto;" />
-
-				<div class="row">
-
-          <div class="col-lg-12 ftco-animate">			
+			<p>Click to open the FAQs in various categories: </p>
+			<button class="collapsible">Model Specification </button>
+			<div class="content">		
 			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
-                <li><h5><b><em>Q:</em> I tried running one of the demos, but got the following compilation error: "Error in CompileCode(code, language, verbose, libLFile) : Compilation ERROR, function(s)/method(s) not created! Any idea what is going on? </em></h5></b>
-                <em>A:</em> It sounds like you have installed the dynr package, but have not configured your machine to have it work.  Have you read the User Installation Guide <a href="https://cran.r-project.org/web/packages/dynr/vignettes/InstallationForUsers.pdf">here</a>, and followed its steps?
-                </li>
-                </br>
-              <li><h5><b><em>Q:</em> I have problems installing dynr in MacOS with Big Sur. I got this result when I tested gas-config: <br></b></h5>
-			  <h6><b>system("gsl-config --cflags", intern=TRUE)<br>
-              [1] "-I/opt/local/include"<br></b></h6>
-              <h5><b>but when I ran "dynr.cook", I got: </b></h5>
-              <h6><b>Setting PKG_CPPFLAGS to -I/opt/local/include<br>
-              Setting PKG_LIBS to -L/opt/local/lib -lgsl -lgslcblas<br>
-              Compilation argument:<br>
-               /Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB RSLinearDiscrete.c -L/opt/local/lib -lgsl -lgslcblas  2> RSLinearDiscrete.c.err.txt<br>
-              May I present to you your error messages?<br>
-              ld: warning: dylib (/opt/local/lib/libgsl.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
-              ld: warning: dylib (/opt/local/lib/libgslcblas.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
-
-              ERROR(s) during compilation: source code errors or compiler configuration errors!<br></b></h6>
-              <em>A:</em> Big Sur sometimes tries to link to explicit (but the wrong versions) of various libraries. These steps worked for members of our team. If you have not previously installed dynr, Rcpp, or related components (e.g., Command Line Tools) but already have R installed, you can try going directly to Step 6.
-              <ol type = "1">
-              <li>Follow the steps suggested by the coatlessprofessor <a href="https://thecoatlessprofessor.com/programming/r/uninstalling-the-r-development-toolchain-on-macos/">here</a> to remove all previous versions of clang and gfortran, clang4 installer receipt, ~/ .R/Makevars and ~/.Renviron
-              </li>
-              <li>Remove previous versions of XCode and download + install XCode</li>
-              <li>If you have previously installed Command Line Tools, navigate to /Library/Developer and remove Command Line Tools (*this was the step that allowed me to run Rcpp successfully)</li>
-              <li>Install gfortran that is appropriate for your OS from <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases"> here</a></li>
-              <li> Re-install R</li>
-              <li> Go to edit /Library/Frameworks/R.framework/Resources/etc/Makeconf and remove all compilers’ explicit link to a particular OS; e.g., change "CC=clang -mmacosx-version-min=10.16" to just "CC=clang"</li>
-              <li>Install dynr</li>
-              <li>Test run with demo("LinearSDE")</li>
-              </ol>
-              </li>
-              <br>
-			  <li><h5><b><em>Q:</em> When I ran "make install" in the Command Prompt/Terminal window following the Developer Installation Guide, I got the following error: <br></b></h5>
-			  <h6><b>sh ./tools/prep<br>
-			  ./tools/prep: line 2: $'\r': command not found<br>
-			  : invalid option name set: errexit<br>
-			  make: *** [Makefile:72: install] Error 2<br></b></h6>
-			  <em>A:</em> Please make sure that the cygwin path is put after the rtools paths (e.g., C:\rtools40\usr\bin;C:\rtools40\mingw64\bin;C:\R\R-4.0.4\bin;C:\cygwin64\bin;).
-              </li>
-              </br>
-
-			</ul>  
+				
+			</ul>
+			</div>
+			
+			<button class="collapsible">Runtime (dynr.cook)</button>
+			<div class="content">		
+			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
+				<li><h5><b><em>Q:</em> I tried running one of the demos, but got the following compilation error: "Error in CompileCode(code, language, verbose, libLFile) : Compilation ERROR, function(s)/method(s) not created! Any idea what is going on? </em></h5></b>
+				<em>A:</em> It sounds like you have installed the dynr package, but have not configured your machine to have it work.  Have you read the User Installation Guide <a href="https://cran.r-project.org/web/packages/dynr/vignettes/InstallationForUsers.pdf">here</a>, and followed its steps?
+				</li>
+			</ul>
+			</div>
 			
 			
-          </div> <!-- .col-md-8 -->
-        </div><!-- END COL -->
-      </div>
-		</section>
+			<button class="collapsible">Developer Installation on Windows</button>
+			<div class="content">		
+			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
+				<li><h5><b><em>Q:</em> When I ran "make install" in the Command Prompt/Terminal window following the Developer Installation Guide, I got the following error: <br></b></h5>
+				<h6><b>sh ./tools/prep<br>
+				./tools/prep: line 2: $'\r': command not found<br>
+				: invalid option name set: errexit<br>
+				make: *** [Makefile:72: install] Error 2<br></b></h6>
+				<em>A:</em> Please make sure that the cygwin path is put after the rtools paths (e.g., C:\rtools40\usr\bin;C:\rtools40\mingw64\bin;C:\R\R-4.0.4\bin;C:\cygwin64\bin;).
+				</li>
+			</ul>
+			</div>
+			
+			<button class="collapsible">Developer Installation on Mac/Linux</button>
+			<div class="content">		
+			<ul style="list-style-type:circle;margin:14px;padding-top: 20px;">
+				<li><h5><b><em>Q:</em> I have problems installing dynr in MacOS with Big Sur. I got this result when I tested gas-config: <br></b></h5>
+				<h6><b>system("gsl-config --cflags", intern=TRUE)<br>
+				[1] "-I/opt/local/include"<br></b></h6>
+				<h5><b>but when I ran "dynr.cook", I got: </b></h5>
+				<h6><b>Setting PKG_CPPFLAGS to -I/opt/local/include<br>
+				Setting PKG_LIBS to -L/opt/local/lib -lgsl -lgslcblas<br>
+				Compilation argument:<br>
+				/Library/Frameworks/R.framework/Resources/bin/R CMD SHLIB RSLinearDiscrete.c -L/opt/local/lib -lgsl -lgslcblas  2> RSLinearDiscrete.c.err.txt<br>
+				May I present to you your error messages?<br>
+				ld: warning: dylib (/opt/local/lib/libgsl.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
+				ld: warning: dylib (/opt/local/lib/libgslcblas.dylib) was built for newer macOS version (11.0) than being linked (10.13)<br>
+
+				ERROR(s) during compilation: source code errors or compiler configuration errors!<br></b></h6>
+				<em>A:</em> Big Sur sometimes tries to link to explicit (but the wrong versions) of various libraries. These steps worked for members of our team. If you have not previously installed dynr, Rcpp, or related components (e.g., Command Line Tools) but already have R installed, you can try going directly to Step 6.
+				<ol type = "1">
+				<li>Follow the steps suggested by the coatlessprofessor <a href="https://thecoatlessprofessor.com/programming/r/uninstalling-the-r-development-toolchain-on-macos/">here</a> to remove all previous versions of clang and gfortran, clang4 installer receipt, ~/ .R/Makevars and ~/.Renviron
+				</li>
+				<li>Remove previous versions of XCode and download + install XCode</li>
+				<li>If you have previously installed Command Line Tools, navigate to /Library/Developer and remove Command Line Tools (*this was the step that allowed me to run Rcpp successfully)</li>
+				<li>Install gfortran that is appropriate for your OS from <a href="https://github.com/fxcoudert/gfortran-for-macOS/releases"> here</a></li>
+				<li> Re-install R</li>
+				<li> Go to edit /Library/Frameworks/R.framework/Resources/etc/Makeconf and remove all compilers’ explicit link to a particular OS; e.g., change "CC=clang -mmacosx-version-min=10.16" to just "CC=clang"</li>
+				<li>Install dynr</li>
+				<li>Test run with demo("LinearSDE")</li>
+				</ol>
+				</li>
+				</br>
+				
+				<li><h5><b><em>Q:</em> When I ran "make install" in the Command Prompt/Terminal window following the Developer Installation Guide, I got the following error: <br></b></h5>
+				<h6><b>sh ./tools/prep<br>
+				./tools/prep: line 2: $'\r': command not found<br>
+				: invalid option name set: errexit<br>
+				make: *** [Makefile:72: install] Error 2<br></b></h6>
+				<em>A:</em> Please make sure that the cygwin path is put after the rtools paths (e.g., C:\rtools40\usr\bin;C:\rtools40\mingw64\bin;C:\R\R-4.0.4\bin;C:\cygwin64\bin;).
+				</li>
+			</ul>
+			</div>
+
+
+
+			<script>
+			var coll = document.getElementsByClassName("collapsible");
+			var i;
+
+			for (i = 0; i < coll.length; i++) {
+			  coll[i].addEventListener("click", function() {
+				this.classList.toggle("active");
+				var content = this.nextElementSibling;
+				if (content.style.maxHeight){
+				  content.style.maxHeight = null;
+				} else {
+				  content.style.maxHeight = content.scrollHeight + "px";
+				} 
+			  });
+			}
+			</script>
+		</div>
+	</section>
+		
 		
     <footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
